@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="css/style.css"><meta name="robots" content="noindex"><title>Take the quiz | Beyond the Buzz</title></head><body>
+<header class="top"><a class="logo" href="index.html">BEYOND·THE·BUZZ</a><nav><a href="why.html">Why this study</a><a class="pill" href="survey.html">Take the quiz</a></nav></header>
+<main>
+<div id="why" hidden></div>
+<section id="hero" class="wrap"><div class="card">
+<span class="tag">Anonymous &amp; aggregate</span>
+<h1 class="sm">Before we begin</h1>
+<p>This study explores what influences teenage energy drink consumption in Qatar: social circles, social media, gaming, studying, sleep, the local environment, and awareness of health effects.</p>
+<p>Your answers are completely anonymous. We never ask for names, school names, exact locations, or social media accounts. Results are analysed only in aggregate. This research supports UN Sustainable Development Goal 12, Responsible Consumption &amp; Production.</p>
+<ul class="l"><li>One question at a time, about 4–6 minutes.</li><li>Skip any optional question. Look for “Prefer not to say”.</li><li>We investigate associations. We don't assume anything causes consumption.</li></ul>
+<div class="btns"><button id="start" class="btn primary">Begin</button></div></div></section>
+<section id="quiz" class="wrap" hidden>
+<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="bar"></i></div>
+<p id="plabel" class="note"></p>
+<div id="card" class="card" aria-live="polite"></div>
+</section>
+</main>
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/survey.js"></script>
+</body></html>

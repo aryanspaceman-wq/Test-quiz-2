@@ -11,7 +11,7 @@ create policy "public can submit" on public.responses
 
 create policy "researcher can read" on public.responses
   for select to authenticated
-  using ((auth.jwt() ->> 'email') = 'aryanspaceman@gmail.com');
+  using ((auth.jwt() ->> 'email') = 'aryan-12966@sisqatar.info');
 
 grant insert on public.responses to anon;
 grant select on public.responses to authenticated;

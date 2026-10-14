@@ -1,4 +1,4 @@
 window.BTB_CONFIG = {
-  SUPABASE_URL: "PASTE_PROJECT_URL_HERE",
-  SUPABASE_ANON_KEY: "PASTE_ANON_PUBLIC_KEY_HERE"
+  SUPABASE_URL: "https://qerclgilactrpykkzvyj.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_W4YVnh7LCGVvhm0P8NkYgg_dVmRjCCQ"
 };

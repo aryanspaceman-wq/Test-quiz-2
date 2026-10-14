@@ -35,7 +35,7 @@ function draw(){
  const fa=$("#fa").value,fr=$("#fr").value,fe=$("#fe").value;
  const d=rows.filter(r=>(!fa||r.age===fa)&&(!fr||r.area===fr)&&(!fe||r.ever===fe));
  let h=`<p class="stat"><b>${d.length}</b> valid responses in view (${rows.length} in total)</p>`;
- if(d.length<MIN){$("#out-charts").innerHTML=h+`<p class="note">Fewer than ${MIN} responses in this view, so breakdowns are hidden to protect participants.</p>`;return}
+ if(d.length<MIN){$("#out-charts").innerHTML=h+`<p class="note">Fewer than ${MIN} responses in this view, so breakdowns are hidden to protect participants.${rows.length?"":" If you know answers were submitted but see none, the email you signed in with probably does not match the email in the database rule."}</p>`;return}
  const ev=d.filter(r=>r.ever),k=ev.filter(r=>r.ever==="Yes").length;
  let pv="";if(ev.length>=MIN){const[l,u]=wilson(k,ev.length);pv=`<p class="stat"><b>${pc(k/ev.length)}</b> have ever tried an energy drink</p><p>95% confidence interval: ${pc(l)} to ${pc(u)} (Wilson method).</p>`}
  h+=card("Estimated prevalence (ever consumed)",pv||"Not enough answers.",`Denominator: ${ev.length} who answered, of ${d.length}. The interval describes sampling uncertainty only, not bias from who chose to take part.`);
@@ -56,7 +56,7 @@ function draw(){
  h+=bars(d,"What would help informed decisions","g_enc");
  $("#out-charts").innerHTML=h;
 }
-const esc=v=>`"${String(v??"").replace(/"/g,'""')}"`;
+const esc=v=>{let s=String(v??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return `"${s.replace(/"/g,'""')}"`};
 $("#csv").onclick=()=>{
  const cols=["id","created_at",...QS.map(q=>q.id)];
  const csv=[cols.join(","),...rows.map(r=>cols.map(c=>esc(Array.isArray(r[c])?r[c].join("|"):r[c])).join(","))].join("\n");
@@ -65,6 +65,7 @@ $("#csv").onclick=()=>{
 $("#out").onclick=async()=>{await sb.auth.signOut();location.reload()};
 $("#go").onclick=async()=>{
  const{error}=await sb.auth.signInWithPassword({email:$("#em").value.trim(),password:$("#pw").value});
- if(error)return $("#lerr").textContent="Sign-in failed. Check your email and password.";enter()};
+ if(error)return $("#lerr").textContent="Sign-in failed: "+error.message;enter()};
+$("#pw").addEventListener("keydown",e=>{if(e.key==="Enter")$("#go").click()});
 sb.auth.getSession().then(({data})=>{if(data.session)enter()});
 })();

@@ -5,6 +5,7 @@
 <section id="login" class="card"><h2>Sign in</h2>
 <p><label>Email<br><input id="em" type="email" autocomplete="username"></label></p>
 <p><label>Password<br><input id="pw" type="password" autocomplete="current-password"></label></p>
+<p><button type="button" class="btn" onclick="var p=document.getElementById('pw'),s=p.type==='password';p.type=s?'text':'password';this.textContent=s?'Hide password':'Show password'">Show password</button></p>
 <p class="err" id="lerr" role="alert"></p><button id="go" class="btn primary">Sign in</button></section>
 <section id="dash" hidden>
 <p class="note">These results show associations, not causes. They describe the people who answered and do not represent all teenagers in Qatar unless the sampling design supports that. Groups smaller than 5 are hidden.</p>
